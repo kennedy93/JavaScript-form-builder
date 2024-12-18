@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop Form Builder</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="text-center mb-4">Drag and Drop Form Builder</h2>
+        </div>
+    </div>
+    <div class="row align-self-stretch">
+        <div class="col-lg-3">
+            <div class="card h-100">
+                <div class="card-header">
+                    <h5 class="card-title mb-0 py-2">Form Elements</h5>
+                </div>
+                <div class="card-body">
+                    <div id="sidebar">
+                        <div class="form-element" draggable="true" data-type="text"><i class="fa-solid fa-up-down-left-right"></i>
+                            Textbox
+                        </div>
+                        <div class="form-element" draggable="true" data-type="number"><i class="fa-solid fa-up-down-left-right"></i>
+                            Number
+                        </div>
+                        <div class="form-element" draggable="true" data-type="textarea"><i class="fa-solid fa-up-down-left-right"></i>
+                            Textarea
+                        </div>
+                        <div class="form-element" draggable="true" data-type="select"><i class="fa-solid fa-up-down-left-right"></i>
+                            Select Box
+                        </div>
+                        <div class="form-element" draggable="true" data-type="file"><i class="fa-solid fa-up-down-left-right"></i> File
+                            Upload
+                        </div>
+                        <div class="form-element" draggable="true" data-type="checkbox"><i class="fa-solid fa-up-down-left-right"></i>
+                            Checkbox
+                        </div>
+                        <div class="form-element" draggable="true" data-type="paragraph"><i class="fa-solid fa-up-down-left-right"></i>
+                            Paragraph
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-9">
+            <div class="card h-100">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="card-title mb-0">Form Builder</h5>
+                    <button id="export-button" class="btn btn-outline-primary"><i class="fas fa-file-export"></i> Export
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div id="form-builder" class="drop-zone">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="elementModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title">Edit Element</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="label-input">Label</label>
+                            <input type="text" class="form-control" id="label-input">
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="is-required-input">Is Required</label>
+                            <select class="form-control" id="is-required-input">
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="select-values-input">Values (comma-separated for select box)</label>
+                            <input type="text" class="form-control" id="select-values-input">
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="max-filesize-input">Max File Size (MB)</label>
+                            <input type="text" class="form-control" id="max-filesize-input">
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="content-input">Contents</label>
+                            <textarea class="form-control" id="content-input"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="block-type-input">Block Type</label>
+                            <select class="form-control" id="block-type-input">
+                                <option value="P">P</option>
+                                <option value="H1">H1</option>
+                                <option value="H2">H2</option>
+                                <option value="H3">H3</option>
+                                <option value="H4">H4</option>
+                                <option value="H5">H5</option>
+                                <option value="H6">H6</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button class="btn btn-primary" id="save-button">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Include Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script src="app.js"></script>
+<script src="export.js"></script>
+</body>
+</html>

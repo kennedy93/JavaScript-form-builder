@@ -1,0 +1,40 @@
+body {
+    font-family: "Nunito", serif;
+}
+#sidebar {
+    width: 100%;
+    padding: 10px;
+    background: #f4f4f4;
+    border-right: 1px solid #ddd;
+}
+#form-builder {
+    /*flex: 1;*/
+    padding: 10px;
+    min-height: 350px;
+    height: 100%;
+    border: 1px dashed #ccc;
+    position: relative;
+}
+.form-element {
+    padding: 10px;
+    margin: 5px 0;
+    background: #fff;
+    border: 1px dashed #226bba;
+    border-radius: 4px;
+    cursor: grab;
+    display: block;
+    position: relative;
+}
+.form-element.dragging {
+    opacity: 0.5;
+}
+.placeholder {
+    background: #f0f0f0;
+    border: 1px dashed #ccc;
+    min-height: 80px;
+}
+.edit-buttons{
+    position: absolute;
+    right: 1px;
+    top: 1px;
+}
