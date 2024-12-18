@@ -7,4 +7,4 @@ Simple Drag and drop form builder with sorting using Html, CSS & JavaScript
 Open index.html for preview and modify files as you need.
 
 ### Preview
-![Preview]([https://imgur.com/a/uynTHYP](https://i.imgur.com/gxgjtQP.png))
+![Preview](https://i.imgur.com/gxgjtQP.png)
